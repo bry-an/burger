@@ -10,14 +10,14 @@ let orm = {
     }, 
     insertOne: (table, name, cb) => {
         let queryString = 'INSERT INTO ?? (burger_name, devoured) VALUES (?, ?)';
-        connection.query(queryString, [table, name, true ], (err, res) => {
+        connection.query(queryString, [table, name, false ], (err, res) => {
             if (err) throw err;
             cb(res);
         });
     }, 
-    updateOne: (table, id, devoured, cb) => {
+    updateOne: (table, id, devouredStatus, cb) => {
         let queryString = 'UPDATE ?? SET devoured = ? WHERE id = ?';
-        connection.query(queryString, [table, devoured, id], (err, res) => {
+        connection.query(queryString, [table, devouredStatus, id], (err, res) => {
             if (err) throw err;
             cb(res);
         })

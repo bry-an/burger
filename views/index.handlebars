@@ -1,31 +1,40 @@
 <h1>It's time to eat your burger!</h1>
 
-<div id='undevoured'>
-    <h3>Here are the burgers currently available for devouring:</h3>
-    <ul>
-        {{ #each burger }}
-        {{ unless devoured }}
-        {{ burger.name }}
-        <button class = 'devour-button' data-id={{ burger.id }}>Devour!</button>
-        {{ /if }}
-        {{ /each }}
-    </ul>
+<div class = 'row burgers'>
+    <div class ='six-columns undevoured'>
+        <h4>Here are the burgers available for devouring:</h3>
+        <ul>
+            {{#each burgers}}
+            {{#unless devoured}}
+            <div class='burger-uneaten'>
+                <li>{{burger_name}}</li>
+                <button class='devour-button' data-id={{id}}>Devour!</button>
+            </div>
+            {{/unless }}
+            {{/each }}
+        </ul>
+    </div>
+
+    <div class ='six columns devoured'>
+        <h4>Here are the burgers you've devoured:</h3>
+        <ul>
+            {{#each burgers}}
+            {{#if devoured}}
+            <div class='burger-eaten'>
+                <li><p>{{burger_name}}</p></li>
+            </div>
+            {{/if}}
+            {{/each}}
+        </ul>
+    </div>
 </div>
 
-<div id='devoured'></div>
-<h3>Here are the burgers you've devoured:</h3>
-<ul>
-    {{ #each burger }}
-    {{ if devoured }}
-    {{ burger.name }}
-    {{ /if }}
-    {{ /each }}
-</ul>
+<div class ='row add-burger-input'>
+    <h4>Don't see anything you like? Add another burger:</h3>
 
-<h3>Don't see anything you like? Add another burger:</h3>
-
-<form class='create-burger'>
-    <label for='burger'>Burger name:</label>
-    <input type='text' id='create-burger-form' name='burger-name'>
-    <button id='add-burger'>Add Burger</button>
-</form>
+    <form class='create-burger'>
+        <label for='burger'>Burger name:</label>
+        <input type='text' id='create-burger-form' name='burger-name'>
+        <button id='add-burger'>Add Burger</button>
+    </form>
+</div>

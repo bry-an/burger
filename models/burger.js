@@ -6,14 +6,16 @@ let burger = {
             cb(res);
         }));
     },
-    create: (name, devoured, cb) => {
+    create: (name, cb) => {
         orm.insertOne('burgers', name, (res => {
             cb(res);
         }));
     },
-    update: (id, devoured, cb) => {
-        orm.updateOne('burgers', id, devoured, (res => {
+    update: (id, devouredStatus, cb) => {
+        orm.updateOne('burgers', id, devouredStatus, (res => {
             cb(res);
         }));
     }
 }
+
+module.exports = burger;

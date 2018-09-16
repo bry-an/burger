@@ -3,6 +3,7 @@ let burger = require('../models/burger')
 
 let app = express();
 
+
 let router = express.Router();
 
 router.get('/', (req, res) => {
@@ -24,12 +25,12 @@ router.post('/api/burgers', (req, res) => {
 
 router.put('/api/burgers/:id', (req, res) => {
     let burgerId = req.params.id;
-    let devoured = req.body.devoured;
-    console.log(burgerId);
+    let devouredStatus = req.body.devouredStatus;
 
-    burger.update(burgerId, devoured, (result => {
-        if (result.changedRows === 0)
+    burger.update(burgerId, devouredStatus, (result => {
+        if (result.changedRows === 0) {
         return res.status(400).end();
+        }
         else res.status(200).end();
     }));
 })
