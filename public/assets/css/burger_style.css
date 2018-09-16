@@ -1,0 +1,12 @@
+body {
+    width: 90%;
+    margin: auto;
+}
+
+#undevoured {
+    float: left;
+}
+
+#devoured {
+    float: right;
+}

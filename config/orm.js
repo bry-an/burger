@@ -8,9 +8,9 @@ let orm = {
             cb(res)
         });
     }, 
-    insertOne: (table, name, devoured, cb) => {
+    insertOne: (table, name, cb) => {
         let queryString = 'INSERT INTO ?? (burger_name, devoured) VALUES (?, ?)';
-        connection.query(queryString, [table, name, devoured], (err, res) => {
+        connection.query(queryString, [table, name, true ], (err, res) => {
             if (err) throw err;
             cb(res);
         });
